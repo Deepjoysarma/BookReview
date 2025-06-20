@@ -17,7 +17,7 @@ const Navbar = () => {
       <h1 className="text-2xl font-bold">Books Review</h1>
 
       {/* Middle: Search bar */}
-      <div className="flex w-full sm:w-auto">
+      {/* <div className="flex w-full sm:w-auto">
         <input
           type="text"
           placeholder="Search books..."
@@ -26,7 +26,7 @@ const Navbar = () => {
         <button className="bg-white text-blue-600 px-4 py-2 rounded-r-md hover:bg-gray-200">
           Search
         </button>
-      </div>
+      </div> */}
 
       {/* Right: Profile & Logout */}
       <div className="flex gap-4 items-center">

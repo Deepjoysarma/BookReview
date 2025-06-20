@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/add', upload.single('image'), addBook);
 router.get('/all', getAllBooks);
-router.get('/single/:title', getSingleBook);
+router.get('/single/:id', getSingleBook);
 
 export default router;

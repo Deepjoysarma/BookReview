@@ -59,19 +59,15 @@ const getSingleBook = async (req, res) => {
 
     try {
 
-        const { title } = req.params;
+        const book = await Books.findById(req.params.id);
 
-        const book = await Books.findOne({ title });
+        if (!book) return res.status(404).json({ message: 'Book not found' });
 
-        if (!book) {
-            return res.json({ success: false, message: "Couldn't find book with this title" });
-        }
+        res.status(200).json({ success: true, book });
 
-        res.json({ success: true, message: "Single book retrieved", book });
-        
     } catch (error) {
-        console.log("Couldn't get the book", error);
-        res.json({ success: false, message: "Error in retrieving single book" });
+        console.log("Error in get single book");
+        res.status(500).json({ success: false, message: 'Error retrieving book' });
     }
 };
 

@@ -27,7 +27,12 @@ const Login = () => {
       if (res.data.success) {
         localStorage.setItem("userId", res.data.userId);
         localStorage.setItem("token", res.data.token);
-        navigate("/");
+
+        if(res.data.userId === '6855742ee52e6c7952e79a7a') {
+          localStorage.setItem("role", "admin");
+          navigate("/admindashboard");
+        }
+        else navigate("/");
       }
     } catch (error) {
       console.log("Login error:", error);

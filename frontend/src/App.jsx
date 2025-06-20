@@ -5,6 +5,7 @@ import Profile from './pages/Profile'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import Book from './pages/Book'
+import AdminDashboard from './pages/AdminDashboard'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path='/book/:id' element={<Book />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/admindashboard' element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   )

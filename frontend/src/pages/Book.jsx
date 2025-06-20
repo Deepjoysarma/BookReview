@@ -50,7 +50,6 @@ const Book = () => {
       setText('');
       setRating(5);
       
-      // Refresh reviews after submission
       const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/reviews/${id}`);
       setReviews(res.data.reviews);
 

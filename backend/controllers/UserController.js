@@ -30,10 +30,15 @@ const userRegister = async(req, res) => {
 
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
+        const user = await User.findOne({ email });
+
+        const userId = user._id;
+
         res.status(201).json({
             success:true,
             message:"User Registered Successfully",
-            token
+            token,
+            userId
         });
 
     } catch (error) {
@@ -65,10 +70,13 @@ const userLogin = async(req, res) => {
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
+        const userId = user._id;
+
         res.status(200).json({
             success:true,
             message:"Login Successfully",
-            token
+            token,
+            userId
         });
 
     } catch (error) {

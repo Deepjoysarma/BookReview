@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -33,8 +34,11 @@ const SignUp = () => {
         localStorage.setItem("token", res.data.token);
 
         navigate("/");
+      } else {
+        toast.error(res.data.message || "Login failed");
       }
     } catch (err) {
+      toast.error(err.response?.data?.message || "Something went wrong");
       console.log("Signup error:", err);
     }
   };
@@ -95,6 +99,7 @@ const SignUp = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

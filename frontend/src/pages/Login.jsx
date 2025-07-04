@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -28,16 +29,21 @@ const Login = () => {
         localStorage.setItem("userId", res.data.userId);
         localStorage.setItem("token", res.data.token);
 
-        if(res.data.userId === '6855742ee52e6c7952e79a7a') {
+        if (res.data.userId === "6855742ee52e6c7952e79a7a") {
           localStorage.setItem("role", "admin");
           navigate("/admindashboard");
+        } else {
+          navigate("/");
         }
-        else navigate("/");
+      } else {
+        toast.error(res.data.message || "Login failed");
       }
     } catch (error) {
+      toast.error(error.response?.data?.message || "Something went wrong");
       console.log("Login error:", error);
     }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -84,6 +90,7 @@ const Login = () => {
           </Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };
